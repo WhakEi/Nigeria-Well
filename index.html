@@ -132,7 +132,7 @@
     document.getElementById('language-select').addEventListener('change', function() {
       var currentPath = window.location.origin + window.location.pathname; // Use window.location.origin to include the protocol and hostname
       var selectedLanguage = this.value;
-      window.location.href = currentPath + '/' + selectedLanguage;
+      window.location.href = currentPath + selectedLanguage;
     });
   </script>
 </body>
