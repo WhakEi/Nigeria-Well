@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water for Life: Bring Clean Water to Nigeria</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <style>
+    body {
+      font-family: 'Google Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+
+    /* Styles for desktop */
+    @media (min-width: 768px) {
+      .content-box {
+        display: flex;
+      }
+
+      .description {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      .additional-text {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+    }
+
+    /* Styles for mobile */
+    @media (max-width: 767px) {
+      .additional-text {
+        margin-top: 2rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+        .parent-box {
+            display: flex;
+            justify-content: space-between;
+    }
+
+  .description-box, .additional-text-box {
+    width: 45%; /* adjust this value as needed */
+  }
+}
+
+
+
+    /* Common styles */
+    .header-fixed {
+      background-color: #f1f5f8;
+    }
+
+    .hero {
+      background-color: #f1f5f8;
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .main-content {
+      padding: 2rem;
+    }
+    .content-box {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .description {
+      margin-bottom: 0rem;
+    }
+    .donation-details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .iban {
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: #eee;
+      border-radius: 5px;
+    }
+    .copy-button {
+      margin-left: 1rem;
+      padding: 5px 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .credits {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 5rem;
+    }
+  </style>
+</head>
+<body>
+    <header class="mdc-top-app-bar header-fixed">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <select id="language-select">
+                    <option value="">Select Language</option>
+                    <option value="ar">Arabic</option>
+                    <option value="tr">Turkish</option>
+                </select>
+            </section>
+        </div>
+    </header>
+
+<script>
+  document.getElementById('language-select').addEventListener('change', function() {
+    var currentPath = window.location.pathname;
+    var selectedLanguage = this.value;
+    window.location.href = currentPath + '/' + selectedLanguage;
+  });
+</script>
+
+  <div class="hero">
+    <h1>Give the Gift of Clean Water</h1>
+  </div>
+    <main class="main-content">
+        <div class="parent-box">
+            <div class="content-box description-box">
+                <div class="description">
+                    Inshallah we plan to collect $1200 as a project for Sadaqa Jariyah for Ihsan Seniors of 2024. A Sadaqa never decreases your wealth, but is an investment for the afterlife...
+                </div>
+            </div>
+            <div class="content-box additional-text-box">
+                <div class="additional-text">
+                    Millions of people in Nigeria struggle to access clean water. Imagine living with the constant fear of disease and the burden of long, daily treks just to reach a water source. This is the reality for countless families, but you can help.
+                </div>
+            </div>
+        </div>
+   <div class="content-box">
+     <div class="donation-details">
+       <span class="iban">NG12 ABCDEF 1234567890</span>
+       <button class="mdc-button mdc-button--raised mdc-button--primary copy-button">Copy IBAN</button>
+     </div>
+     <p>Donate any amount you can and be a part of the solution. Together, we can build a well and bring clean water, health, and hope to a community in need.</p>
+   </div>
+   <!-->
