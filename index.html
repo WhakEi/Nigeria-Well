@@ -116,25 +116,27 @@
   </style>
 </head>
 <body>
-    <header class="mdc-top-app-bar header-fixed">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <select id="language-select">
-                    <option value="">Select Language</option>
-                    <option value="ar">Arabic</option>
-                    <option value="tr">Turkish</option>
-                </select>
-            </section>
-        </div>
-    </header>
+  <header class="mdc-top-app-bar header-fixed">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <select id="language-select">
+          <option value="">Select Language</option>
+          <option value="ar">Arabic</option>
+          <option value="tr">Turkish</option>
+        </select>
+      </section>
+    </div>
+  </header>
 
-<script>
-  document.getElementById('language-select').addEventListener('change', function() {
-    var currentPath = window.location.pathname;
-    var selectedLanguage = this.value;
-    window.location.href = currentPath + '/' + selectedLanguage;
-  });
-</script>
+  <script>
+    document.getElementById('language-select').addEventListener('change', function() {
+      var currentPath = window.location.origin + window.location.pathname; // Use window.location.origin to include the protocol and hostname
+      var selectedLanguage = this.value;
+      window.location.href = currentPath + '/' + selectedLanguage;
+    });
+  </script>
+</body>
+
 
   <div class="hero">
     <h1>Give the Gift of Clean Water</h1>
