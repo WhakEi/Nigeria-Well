@@ -1,1 +1,415 @@
-not added yet
+<!DOCTYPE html>
+
+<html
+
+lang="ar">
+
+<head>
+
+
+<meta
+
+charset="UTF-8">
+
+
+<meta
+
+name="viewport"
+
+content="width=device-width, initial-scale=1.0">
+
+
+<title>مشروع بئر نيجيريا</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap">
+  <link
+
+rel="stylesheet"
+
+href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+<style>
+
+
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* Default light mode background */
+  color: #333; /* Default text color */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+    /* Hero text */
+    .hero h1 {
+      font-family: 'Scheherazade New', serif;
+      text-align: center;
+    }
+
+    #language-selector {
+      display: flex;
+      gap: 0.5rem; /* Adjust spacing between buttons */
+      border-radius: 50px;
+      overflow: hidden;
+      padding: 5px 10px;
+      background-color: #c2e7ff;
+      user-select: none; /* Prevent text selection in buttons */
+   }
+
+    .language-button {
+      font-family: Google Sans, sans-serif;
+      padding: 4px 8px;
+      border: none;
+      border-radius: 50px;
+      background-color: transparent;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      color: #212121;
+    }
+
+    .language-button:hover {
+      background-color: #f0f4f8;
+    }
+
+    .language-button.active {
+      background-color: #fff;
+      color: #212121;
+    }
+
+    #language-selector.open {
+      animation: open-selector 0.2s ease-in-out forwards;
+    }
+
+    @keyframes open-selector {
+      0% {
+        transform: scaleY(0);
+      }
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    /* Styles for desktop */
+    @media (min-width: 768px) {
+      .content-box {
+        background-color: #f8f9fa; /* Default box background */
+        transition: background-color 0.3s ease-in-out;
+        display: flex;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #131314;
+        color: #fff;
+      }
+
+      /* Dark mode button styles */
+      .dark-mode-button {
+        background-color: transparent;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .dark-mode-button:hover {
+        background-color: gray;
+      }
+
+      .dark-mode-button.active {
+        background-color: #333; /* Customize active color if desired */
+      }
+
+      /* Click animation (adjust as needed) */
+      .dark-mode-button.active .fas.fa-moon {
+        animation: pulse 0.5s ease-in-out;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+    }
+
+      .content-box.dark-mode { /* Applied to content-box in dark mode */
+        background-color: #1e1f20;
+      }
+
+      .description {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+      }
+
+      .additional-text {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+      }
+    }
+
+    /* Styles for mobile */
+    @media (max-width: 767px) {
+      .additional-text {
+        margin-top: 2rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+        .parent-box {
+            display: flex;
+            justify-content: space-between;
+    }
+
+  .description-box, .additional-text-box {
+    width: 45%; /* adjust this value as needed */
+  }
+}
+
+
+
+    /* Common styles */
+    .header-fixed {
+      background-color: #f1f5f8;
+    }
+
+    .hero {
+      background-color: #f1f5f8;
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .main-content {
+      padding: 2rem;
+    }
+    .content-box {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .description {
+      margin-bottom: 0rem;
+    }
+    .donation-details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .iban {
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: #eee;
+      border-radius: 5px;
+    }
+
+    .copy-button-container {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem; /* Adjust spacing as needed */
+    }
+
+    .text-container {
+      flex: 1; /* Expand to fill available space */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Additional styles for spacing and clarity */
+    .copy-button {
+      margin-left: 1rem; /* Adjust as needed */
+      padding: 5px 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .credits {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 5rem;
+    }
+    .verse-reference {
+      font-family: 'Scheherazade New', serif;
+      font-size: 0.9em; /* Adjust font size as needed */
+      text-align: center;
+      padding-top: 10px; /* Adjust padding as needed */
+      color: #888; /* Adjust color as needed */
+    }
+  </style>
+
+</head>
+<body>
+  <header class="mdc-top-app-bar header-fixed">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <div id="language-selector">
+          <button class="language-button" data-lang="en">English</button>
+          <button class="language-button" data-lang="tr">Türkçe</button>
+        </div>
+        <button id="dark-mode-button" class="dark-mode-button">
+          <i class="material-icons">nightlight_round</i> </button>
+        </button> </section>
+    </div>
+  </header>
+  </body>
+
+
+<script>
+  // Ensure code runs after elements are loaded
+  window.addEventListener('DOMContentLoaded', () => {
+    // Select the copy button
+    const copyButton = document.querySelector(".copy-button");
+
+    // Add click event listener to the button
+    copyButton.addEventListener("click", function() {
+      // Get the IBAN text
+      const ibanText = document.querySelector(".iban").textContent;
+
+      // Copy the IBAN to the clipboard with fallback for older browsers
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(ibanText)
+          .then(() => {
+            alert("The IBAN has been copied to your clipboard.");
+          }, () => {
+            alert("Failed to copy the IBAN.");
+          });
+      } else {
+        // Fallback for older browsers using document.execCommand
+        const textArea = document.createElement("textarea");
+        textArea.value = ibanText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copying text command was ' + msg);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+  });
+
+const languageSelector = document.getElementById('language-selector');
+const languageButtons = document.querySelectorAll('.language-button');
+
+let activeButton = languageButtons[0]; // Arabic by default
+
+languageButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Deactivate current button
+    activeButton.classList.remove('active');
+
+    // Update active button and data-lang value
+    activeButton = button;
+    const selectedLang = button.dataset.lang;
+
+    // Update button styles
+    button.classList.add('active');
+
+    // Trigger animation
+    languageSelector.classList.add('open');
+
+    // Conditional redirect based on language
+    if (selectedLang === 'en') {
+      // Redirect to index page for Arabic and Turkish variants
+      window.location.href = '/';
+    } else {
+      // Redirect to the expected language URL
+      window.location.href = `/${selectedLang}`;
+    }
+  });
+});
+
+
+    document.getElementById('language-select').addEventListener('change', function() {
+      var currentPath = window.location.origin + window.location.pathname; // Use window.location.origin to include the protocol and hostname
+      var selectedLanguage = this.value;
+      window.location.href = currentPath + '' + selectedLanguage;
+    });
+    // Get button and body elements
+    const darkModeButton = document.getElementById('dark-mode-button');
+    const body = document.body;
+
+    // Check for user's preferred mode from a cookie
+    const preferredMode = getCookie('darkMode'); // Replace getCookie with your function
+
+    // Apply preferred mode initially (if any)
+    if (preferredMode === 'enabled') {
+      body.classList.add('dark-mode');
+      darkModeButton.classList.add('active');
+    }
+
+    // Toggle dark mode on button click
+    darkModeButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      darkModeButton.classList.toggle('active');
+
+      // Store preference in a cookie
+      const isDarkModeEnabled = body.classList.contains('dark-mode');
+      setCookie('darkMode', isDarkModeEnabled ? 'enabled' : 'disabled', 30); // Replace setCookie with your function
+    });
+  </script>
+</body>
+
+
+  <div class="hero">
+    <h1>مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُمۡ فِي سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتۡ سَبۡعَ سَنَابِلَ فِي كُلِّ سُنۢبُلَةٖ مِّاْئَةُ حَبَّةٖۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ</h1>
+    <p class="verse-reference">(سورة البقرة، الآية 261)</p>
+  </div>
+    <main class="main-content">
+        <div class="parent-box">
+            <div class="content-box description-box">
+                <div class="description">
+                    إن شاء الله نخطط لجمع 1200 دولار كمشروع لصدقة جارية من طلاب مدارس الإحسان الصف الثاني عشر لسنة 2024. الصدقة لا تقلل من ثروتك أبدًا، ولكنها استثمار في الآخرة...
+                </div>
+            </div>
+            <div class="content-box additional-text-box">
+                <div class="additional-text">
+                    يعاني ملايين الأشخاص في نيجيريا من صعوبة الحصول على المياه النظيفة. تخيل العيش مع الخوف المستمر من الأمراض وعبء الرحلات اليومية الطويلة فقط للوصول إلى مصدر مياه. هذا هو الواقع لعدد لا يحصى من العائلات، ولكن يمكنك المساعدة.
+                </div>
+            </div>
+        </div>
+   <div class="content-box">
+    <div class="donation-details">
+      <span class="iban">NG12 ABCDEF 1234567890</span>
+      <div class="copy-button-container">
+        <button class="mdc-button mdc-button--raised mdc-button--primary copy-button">Copy IBAN</button>
+      </div>
+    <div class="text-container">
+    <p> روى الإمام أحمد وغيره عن سعد بن عبادة- رضي الله عنه- قال: قلت: (يا رسول الله إن أمي ماتت، أفأتصدق عنها؟ قال: نعم، قلت: فأي الصدقة أفضل؟ قال: سقي الماء)</p>
+    </div>
+    </div>
+  </div>
+
+   <!-->
