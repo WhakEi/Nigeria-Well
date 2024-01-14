@@ -419,8 +419,8 @@ languageButtons.forEach(button => {
       window.location.href = '/nigeria';
     } else {
       // Redirect to the correct language URL (fix: use a conditional)
-      if (window.location.pathname.endsWith('/ar')) {
-        window.location.href = `/${selectedLang}`; // Replace '/ar' with selected language
+      if (window.location.pathname.endsWith('/tr')) {
+        window.location.href = `/nigeria/${selectedLang}`; // Replace '/tr' with selected language
       } else {
         window.location.href = `${window.location.origin}/nigeria/${selectedLang}`; // Use full URL for other paths
       }
