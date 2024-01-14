@@ -431,7 +431,7 @@ languageButtons.forEach(button => {
       if (window.location.pathname.endsWith('/ar')) {
         window.location.href = `/nigeria/${selectedLang}`; // Replace '/ar' with selected language
       } else {
-        window.location.href = `${window.location.origin}/${selectedLang}`; // Use full URL for other paths
+        window.location.href = `${window.location.origin}/nigeria/${selectedLang}`; // Use full URL for other paths
       }
     }
   });
