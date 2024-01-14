@@ -131,6 +131,38 @@ body {
         text-align: center;
 
       }
+      .footer {
+        background-color: #f1f5f8; /* Desired background color */
+        padding: 2rem 0; /* Adjust spacing as needed */
+        text-align: center; /* Center align content */
+        font-size: 0.9rem; /* Adjust as needed */
+        color: #333; /* Adjust as needed */
+      }
+
+      .footer a {
+        color: #777; /* Gray link color */
+        text-decoration: none; /* Remove default underline */
+        margin-right: 1rem; /* Adjust spacing as needed */
+      }
+
+      .footer a:hover,
+      .footer a:active {
+        text-decoration: underline; /* Apply underline on hover or click */
+      }
+
+      .footer-left,
+      .footer-right {
+        display: inline-block; /* Ensure side-by-side layout */
+        width: 45%; /* Adjust widths as needed */
+        vertical-align: center; /* Align content to top */
+      }
+
+      .footer-bottom {
+        margin-top: 1rem; /* Add spacing above the bottom text */
+        text-align: center; /* Center the text */
+        font-size: 0.8rem; /* Adjust font size as needed */
+      }
+
       .ty {
         width: 100%;
         display: flex;
@@ -232,12 +264,6 @@ body {
       border-radius: 5px;
     }
 
-    .copy-button-container {
-      display: flex;
-      align-items: center;
-      margin-right: 1rem; /* Adjust spacing as needed */
-    }
-
     .text-container {
       flex: 1; /* Expand to fill available space */
       display: flex;
@@ -246,14 +272,26 @@ body {
     }
 
     /* Additional styles for spacing and clarity */
+    .copy-button-container {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem; /* Adjust spacing as needed */
+    }
+
     .copy-button {
+      height: 40px; /* Adjust as needed */
       margin-left: 1rem; /* Adjust as needed */
-      padding: 5px 10px;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
+      padding: 5px 12px; /* Adjust as needed */
+      border: 6px solid #c2e7ff; /* Border color matching button background */
+      border-radius: 50px; /* Maintain pill shape */
+      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
+      background-color: #c2e7ff; /* Desired color */
+      color: #212121; /* Match language button text color */
       cursor: pointer;
+    }
+
+    .copy-button:hover {
+      background-color: #f0f4f8; /* Hover color */
     }
 
     .credits {
@@ -320,6 +358,41 @@ body {
     });
   });
 
+
+    window.addEventListener('DOMContentLoaded', () => {
+    // Select the copy button
+    const copyButton = document.querySelector(".copy-name");
+  // Add click event listener to the button
+    copyButton.addEventListener("click", function() {
+      // Get the name text
+      const feyyazmText = document.querySelector(".feyyazm").textContent;
+
+      // Copy the name to the clipboard with fallback for older browsers
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(feyyazmText)
+          .then(() => {
+            alert("تم نسخ الإسم إلى الحافظة");
+          }, () => {
+            alert("حدث خطأ أثناء نسخ الإسم");
+          });
+      } else {
+        // Fallback for older browsers using document.execCommand
+        const textArea = document.createElement("textarea");
+        textArea.value = feyyazmText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copying text command was ' + msg);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+  });
+
 const languageSelector = document.getElementById('language-selector');
 const languageButtons = document.querySelectorAll('.language-button');
 
@@ -345,8 +418,12 @@ languageButtons.forEach(button => {
       // Redirect to index page for Arabic and Turkish variants
       window.location.href = '/';
     } else {
-      // Redirect to the expected language URL
-      window.location.href = `/${selectedLang}`;
+      // Redirect to the correct language URL (fix: use a conditional)
+      if (window.location.pathname.endsWith('/ar')) {
+        window.location.href = `/${selectedLang}`; // Replace '/ar' with selected language
+      } else {
+        window.location.href = `${window.location.origin}/${selectedLang}`; // Use full URL for other paths
+      }
     }
   });
 });
@@ -383,7 +460,7 @@ languageButtons.forEach(button => {
       <div class="detail-set">
         <span class="iban">TR48 0020 3000 0378 8052 0000 06</span>
         <div class="copy-button-container">
-          <button class="mdc-button mdc-button--raised mdc-button--primary copy-button">انسخ IBAN</button>
+          <button class="copy-button">انسخ IBAN</button>
         </div>
       </div>
       <div class="detail-set">
@@ -391,7 +468,7 @@ languageButtons.forEach(button => {
         <div class="copy-button-container">&nbsp;</div>
         <span class="okk">AlBaraka</span>
         <div class="copy-button-container">
-          <button class="mdc-button mdc-button--raised mdc-button--primary copy-button">انسخ الإسم</button>
+          <button class="copy-button">انسخ الإسم</button>
         </div>
       </div>
     </div>
@@ -437,6 +514,24 @@ languageButtons.forEach(button => {
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+      <h3>مزيد من المعلومات</h3>
+        <a href="https://inirl.net">الصفحة الرئيسية</a><br> <a href="https://github.com/WhakEi/Nigeria-Well">مصدر الرمز</a>
+      </div>
+      <div class="footer-right">
+        <h3>تواصل معي</h3>
+        <a href="https://api.whatsapp.com/send?phone=905312445762&text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D8%8C%20%D9%84%D8%AF%D9%8A%20%D8%A8%D8%B9%D8%B6%20%D8%A7%D9%84%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A7%D8%AA%20%D9%84%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%AA%D9%87%D8%A7">واتساب</a><br> <a href="mailto:mohammad.almobarak@ihsan.school">البريد الإلكتروني</a>
+      </div>
+      <div class="footer-bottom">
+        هذا الموقع تحت إدارة جهاد المبارك، المؤسس المشارك للموقع. مشروع بئر نيجيريا غير ربحية 100 ٪ ، لمزيد من المعلومات، يمكنك الاتصال بفريق إدارة المشروع.
+      </div>
+    </div>
+  </div>
+</footer>
 
 
    <!-->

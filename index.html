@@ -51,6 +51,38 @@ body {
       background-color: #f0f4f8;
     }
 
+      .footer {
+        background-color: #f1f5f8; /* Desired background color */
+        padding: 2rem 0; /* Adjust spacing as needed */
+        text-align: center; /* Center align content */
+        font-size: 0.9rem; /* Adjust as needed */
+        color: #333; /* Adjust as needed */
+      }
+
+      .footer a {
+        color: #777; /* Gray link color */
+        text-decoration: none; /* Remove default underline */
+        margin-right: 1rem; /* Adjust spacing as needed */
+      }
+
+      .footer a:hover,
+      .footer a:active {
+        text-decoration: underline; /* Apply underline on hover or click */
+      }
+
+      .footer-left,
+      .footer-right {
+        display: inline-block; /* Ensure side-by-side layout */
+        width: 45%; /* Adjust widths as needed */
+        vertical-align: center; /* Align content to top */
+      }
+
+      .footer-bottom {
+        margin-top: 1rem; /* Add spacing above the bottom text */
+        text-align: center; /* Center the text */
+        font-size: 0.8rem; /* Adjust font size as needed */
+      }
+
     .parent-box {
       display: flex;
       justify-content: space-between;
@@ -410,3 +442,21 @@ languageButtons.forEach(button => {
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+      <h3>More Information</h3>
+        <a href="https://inirl.net">Homepage</a><br> <a href="https://github.com/WhakEi/Nigeria-Well">Source Code</a>
+      </div>
+      <div class="footer-right">
+        <h3>Contact Me</h3>
+        <a href="https://api.whatsapp.com/send?phone=905312445762&text=Hello%2C%20I%20have%20some%20feedback%20to%20share">WhatsApp</a><br> <a href="mailto:email@email.com">Email</a>
+      </div>
+      <div class="footer-bottom">
+        InIRL is maintained by Jihad Almobarak, Co-Founder of the Website. The Nigeria Well project is 100% Non-Profit, for more information you can contact the Project's management team.
+      </div>
+    </div>
+  </div>
+</footer>

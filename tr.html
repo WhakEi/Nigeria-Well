@@ -56,6 +56,38 @@ body {
       color: #212121;
     }
 
+          .footer {
+        background-color: #f1f5f8; /* Desired background color */
+        padding: 2rem 0; /* Adjust spacing as needed */
+        text-align: center; /* Center align content */
+        font-size: 0.9rem; /* Adjust as needed */
+        color: #333; /* Adjust as needed */
+      }
+
+      .footer a {
+        color: #777; /* Gray link color */
+        text-decoration: none; /* Remove default underline */
+        margin-right: 1rem; /* Adjust spacing as needed */
+      }
+
+      .footer a:hover,
+      .footer a:active {
+        text-decoration: underline; /* Apply underline on hover or click */
+      }
+
+      .footer-left,
+      .footer-right {
+        display: inline-block; /* Ensure side-by-side layout */
+        width: 45%; /* Adjust widths as needed */
+        vertical-align: center; /* Align content to top */
+      }
+
+      .footer-bottom {
+        margin-top: 1rem; /* Add spacing above the bottom text */
+        text-align: center; /* Center the text */
+        font-size: 0.8rem; /* Adjust font size as needed */
+      }
+
     #language-selector.open {
       animation: open-selector 0.2s ease-in-out forwards;
     }
@@ -211,6 +243,14 @@ body {
       border-radius: 5px;
     }
 
+    .feyyazm {
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: #eee;
+      border-radius: 5px;
+    }
+
     .text-container {
       flex: 1; /* Expand to fill available space */
       display: flex;
@@ -239,6 +279,29 @@ body {
     }
 
     .copy-button:hover {
+      background-color: #f0f4f8; /* Hover color */
+    }
+
+    /* Additional styles for spacing and clarity */
+   .copy-name-container {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem; /* Adjust spacing as needed */
+    }
+
+    .copy-name {
+      height: 40px; /* Adjust as needed */
+      margin-left: 1rem; /* Adjust as needed */
+      padding: 5px 12px; /* Adjust as needed */
+      border: 6px solid #c2e7ff; /* Border color matching button background */
+      border-radius: 50px; /* Maintain pill shape */
+      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
+      background-color: #c2e7ff; /* Desired color */
+      color: #212121; /* Match language button text color */
+      cursor: pointer;
+    }
+
+    .copy-name:hover {
       background-color: #f0f4f8; /* Hover color */
     }
 
@@ -305,6 +368,40 @@ body {
     });
   });
 
+    window.addEventListener('DOMContentLoaded', () => {
+    // Select the copy button
+    const copyButton = document.querySelector(".copy-name");
+  // Add click event listener to the button
+    copyButton.addEventListener("click", function() {
+      // Get the name text
+      const feyyazmText = document.querySelector(".feyyazm").textContent;
+
+      // Copy the name to the clipboard with fallback for older browsers
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(feyyazmText)
+          .then(() => {
+            alert("Adı panonuza kopyalandı");
+          }, () => {
+            alert("Adı kopyalarken bir hata vardı");
+          });
+      } else {
+        // Fallback for older browsers using document.execCommand
+        const textArea = document.createElement("textarea");
+        textArea.value = feyyazmText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copying text command was ' + msg);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+  });
+
 const languageSelector = document.getElementById('language-selector');
 const languageButtons = document.querySelectorAll('.language-button');
 
@@ -330,8 +427,12 @@ languageButtons.forEach(button => {
       // Redirect to index page for Arabic and Turkish variants
       window.location.href = '/';
     } else {
-      // Redirect to the expected language URL
-      window.location.href = `/${selectedLang}`;
+      // Redirect to the correct language URL (fix: use a conditional)
+      if (window.location.pathname.endsWith('/ar')) {
+        window.location.href = `/${selectedLang}`; // Replace '/ar' with selected language
+      } else {
+        window.location.href = `${window.location.origin}/${selectedLang}`; // Use full URL for other paths
+      }
     }
   });
 });
@@ -372,11 +473,10 @@ languageButtons.forEach(button => {
         </div>
       </div>
       <div class="detail-set">
-        <span class="iban">Feyyaz Mehmetoğlu</span>
-        <div class="copy-button-container">&nbsp;</div>
         <span class="okk">AlBaraka</span>
-        <div class="copy-button-container">
-          <button class="copy-button">Adı Kopyala</button>
+        <span class="feyyazm">Feyyaz Mehmetoğlu</span>
+        <div class="copy-name-container">
+          <button class="copy-name">Adı Kopyala</button>
         </div>
       </div>
     </div>
@@ -423,3 +523,21 @@ languageButtons.forEach(button => {
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+      <h3>Daha Fazla Bilgi</h3>
+        <a href="https://inirl.net">Ana Sayfa</a><br> <a href="https://github.com/WhakEi/Nigeria-Well">Kaynak kodu</a>
+      </div>
+      <div class="footer-right">
+        <h3>Bana Ulaşın</h3>
+        <a href="https://api.whatsapp.com/send?phone=905312445762&text=Hello%2C%20I%20have%20some%20feedback%20to%20share">WhatsApp</a><br> <a href="mailto:email@email.com">E-Posta</a>
+      </div>
+      <div class="footer-bottom">
+        InIRL, web sitesinin kurucu ortağı Jihad Almobarak tarafından korunmaktadır. Nijerya Kuyu Projesi %100 kar amacı gütmeyen kurulmuştur, daha fazla bilgi için projenin yönetim ekibiyle iletişime geçebilirsiniz.
+      </div>
+    </div>
+  </div>
+</footer>
