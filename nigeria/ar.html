@@ -196,6 +196,17 @@ body {
       }
     }
 
+    /*Styles for laptop*/
+    @media (max-width: 1620px) {
+      .additional-text {
+        margin-top: 2rem;
+      }
+      .hero {
+        height: 50vh; /* Increase height for better text wrapping */
+        font-size: 1.1rem; /* Reduce font size */
+      }
+    }
+
     /* Styles for mobile */
     @media (max-width: 768px) {
       .additional-text {
@@ -367,9 +378,9 @@ body {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(ibanText)
           .then(() => {
-            alert("The IBAN has been copied to your clipboard.");
+            alert("تم نسخ الIBAN إلى الحافظة.");
           }, () => {
-            alert("Failed to copy the IBAN.");
+            alert("حدث خطأ أثناء نسخ الIBAN.");
           });
       } else {
         // Fallback for older browsers using document.execCommand
@@ -402,9 +413,9 @@ body {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(feyyazmText)
           .then(() => {
-            alert("تم نسخ الإسم إلى الحافظة");
+            alert("تم نسخ الإسم إلى الحافظة.");
           }, () => {
-            alert("حدث خطأ أثناء نسخ الإسم");
+            alert("حدث خطأ أثناء نسخ الإسم.");
           });
       } else {
         // Fallback for older browsers using document.execCommand
