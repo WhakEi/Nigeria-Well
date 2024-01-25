@@ -31,6 +31,7 @@ href="https://unpkg.com/material-components-web@latest/dist/material-components-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 
 
@@ -39,6 +40,14 @@ body {
       margin: 0;
       padding: 0;
       background-color: #fff;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
     }
 
     .hero {
@@ -52,6 +61,27 @@ body {
       font-size: 1.2rem;
       font-weight: bold;
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .warning-strip {
+      background-color: #c99104;
+      padding: 2px 4px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .warning-strip .left-text {
+      margin-right: 0px; /* Increase or decrease this value to control the distance */
+    }
+
+    .warning-strip .right-text {
+      margin-left: 90px; /* Increase or decrease this value to control the distance */
     }
 
     /* Hero text */
@@ -116,7 +146,7 @@ body {
 
       .thank-you-box, .donor-list-box {
         background-color: #f5f5f5;
-        width: 45%; /* adjust this value as needed */
+        width: 100%; /* adjust this value as needed */
       }
       .thank-you-box {
         width: 100%;
@@ -216,12 +246,25 @@ body {
         height: 60vh; /* Increase height for better text wrapping */
         font-size: 0.7rem; /* Reduce font size */
       }
+      .creditbox {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        /* I have no idea how this works but please don't change anything here future me*/
+    }
     }
 
     @media (min-width: 768px) {
         .parent-box {
             display: flex;
             justify-content: space-between;
+    }
+
+    .creditbox {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            /* I have no idea how this works but please don't change anything here future me*/
     }
 
   .description-box, .additional-text-box {
@@ -333,6 +376,24 @@ body {
       background-color: #f0f4f8; /* Hover color */
     }
 
+    .open-form {
+      height: 40px; /* Adjust as needed */
+      margin-left: 1rem; /* Adjust as needed */
+      padding: 5px 12px; /* Adjust as needed */
+      border: 6px solid #c2e7ff; /* Border color matching button background */
+      border-radius: 50px; /* Maintain pill shape */
+      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
+      background-color: #c2e7ff; /* Desired color */
+      color: #212121; /* Match language button text color */
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .open-form:hover {
+      background-color: #f0f4f8; /* Hover color */
+    }
+
     .verse-reference {
       font-family: 'Scheherazade New', serif;
       font-size: 0.9em; /* Adjust font size as needed */
@@ -352,6 +413,15 @@ body {
 
 </head>
 <body>
+  <div class="warning-strip" id="warning-strip">
+          <p class="left-text"><strong>بإمكانك الأن إرسال أكثر من الإستمارة واحدة، أشتري سهما قبل فوات الأوان!</strong></p>
+          <i class="material-symbols-outlined close-button right-text" id="close-button">close</i>
+      </div>
+      <script>
+          document.getElementById('close-button').addEventListener('click', function() {
+              document.getElementById('warning-strip').style.display = 'none';
+          });
+      </script>
   <header class="mdc-top-app-bar header-fixed">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
@@ -510,14 +580,21 @@ languageButtons.forEach(button => {
         <span class="feyyazm">Feyyaz Mehmetoğlu</span>
         <div class="copy-name-container">
           <button class="copy-name">انسخ الإسم</button>
-        </div>
+          </div>
       </div>
     </div>
+    <div class="detail-set">
+    <div class="text-container">
+      <p>يكلف سهم واحد 350 ليرة ، يمكن لأكثر من طالب ان يشاركوا بشراء سهم واحد ويمكن لطالب شراء اكثر من سهم واحد.</p>
+      <button class="open-form" onclick="window.open('https://forms.gle/RCU7RnDRkgStqCL89', '_blank')">أفتح الإستمارة</button>
+      </div>
+      </div>
     <div class="text-container">
       <p> روى الإمام أحمد وغيره عن سعد بن عبادة- رضي الله عنه- قال: قلت: (يا رسول الله إن أمي ماتت، أفأتصدق عنها؟ قال: نعم، قلت: فأي الصدقة أفضل؟ قال: سقي الماء)</p>
     </div>
   </div>
-  <div class="main-content">
+
+ <div class="main-content">
   <div class="parent-box">
     <div class="content-box thank-you-box">
       <div class="ty">
@@ -531,8 +608,33 @@ languageButtons.forEach(button => {
       </ul>
       </div>
     </div>
+    </div>
+    <div class="creditbox">
     <div class="content-box donor-list-box">
     <div class="dl">
+      <ul>
+        <li>مريم سعدى</li>
+        <li>نور جمال</li>
+        <li>أديب الراس</li>
+        <li>دانة العمودي</li>
+        <li>سعيد أحمد نور</li>
+        <li>عبدالكريم كراوي</li>
+        <li>علي المبارك</li>
+        <li>أستاذ علاء حواس</li>
+        <li>إيمان شهان</li>
+        <li>صادق</li>
+        <li>بينار المصتطفى</li>
+        <li>ريم أتيغا</li>
+        <li>عبدالرحمان الأصباحي</li>
+        <li>باسل الشريف</li>
+        <li>شهد الرومي</li>
+        <li>علي خان</li>
+        <li>أحمد عبدالله</li>
+      </ul>
+      </div>
+      </div>
+      <div class="content-box donor-list-box">
+      <div class="dl">
       <h3>قائمة المتصدقين (في التسلسل الزمني)</h3>
       <ul>
         <li>ليث كتانا</li>
@@ -557,11 +659,6 @@ languageButtons.forEach(button => {
         <li>يوسف عبدالواحد</li>
         <li>آسيا أحمد</li>
         <li>عمر الأوبري</li>
-        <li>مريم سعدى</li>
-        <li>نور جمال</li>
-        <li>أديب الراس</li>
-        <li>دانة العمودي</li>
-        <li>سعيد أحمد نور</li>
       </ul>
     </div>
   </div>
