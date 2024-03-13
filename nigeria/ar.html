@@ -33,10 +33,147 @@ href="https://unpkg.com/material-components-web@latest/dist/material-components-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
+    body {
+      font-family: 'Google Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+.card{
+	background-color: #fff;
+	width: 280px;
+	border-radius: 33px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding: 2rem !important;
+                       margin: auto; /* Add individual card margin */
+                       justify-content: center;
+	align-items: center;
+}
+                       .card-container {
+                       display: grid;
+                       grid-template-columns: repeat(3, 10fr); /* Two columns */
+                       grid-gap: 10px; /* Spacing between cards */
+                       max-width: 80%; /* Limit container width to 80% */
+                       margin: 0 auto; /* Center the container horizontally */
+                       flex-wrap: wrap; /* Allow wrapping to next line */    
+	text-align: center;
+                       justify-content: center;
+	align-items: center;
+  }
+                         #confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent clicks on confetti */
+}
+
+.top-container{
+	display: flex;
+	align-items: center;
+}
+.profile-image{
+	border-radius: 50px;
+	border: 2px solid #5957f9;
+}
+.name{
+	font-size: 15px;
+	font-weight: bold;
+	color: #272727;
+	position: relative;
+	top: 8px;
+}
+.mail{
+	font-size: 14px;
+	color: grey;
+	position: relative;
+	top: 2px;
+}
+.middle-container{
+	background-color: #eee;
+	border-radius: 12px;
+
+}
+.middle-container:hover {
+	border: 1px solid #5957f9;
+}
+.dollar-div{
+	background-color: #5957f9;
+	padding: 12px;
+	border-radius: 10px;
+}
+.round-div{
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.dollar{
+	font-size: 16px !important;
+	color: #5957f9 !important;
+	font-weight: bold !important;
+}
+
+
+.current-balance{
+	font-size: 15px;
+	color: #272727;
+	font-weight: bold;
+}
+.amount{
+	color: #5957f9;
+	font-size: 16px;
+	font-weight: bold;
+}
+.dollar-sign{
+	font-size: 16px;
+	color: #272727;
+	font-weight: bold;
+}
+
+.recent-border{
+	border-left: 2px solid #5957f9;
+	display: flex;
+	align-items: center;
+
+}
+.recent-border:hover {
+	border-bottom: 1px solid #dee2e6!important;
+}
+
+.recent-orders{
+	font-size: 16px;
+	font-weight: 700;
+	color: #5957f9;
+	margin-left: 2px;
+}
+
+.wishlist{
+	font-size: 16px;
+	font-weight: 700;
+	color: #272727;
+
+}
+.wishlist-border:hover{
+	border-bottom: 1px solid #dee2e6!important;
+}
+.fashion-studio{
+	font-size: 16px;
+	font-weight: 700;
+	color: #272727;
+}
+.fashion-studio-border:hover {
+	border-bottom: 1px solid #dee2e6!important;
+}
 
 
 body {
-      font-family: 'Cairo', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #fff;
@@ -49,44 +186,8 @@ body {
       'GRAD' 0,
       'opsz' 24
     }
-
-    .hero {
-      background-color: #f1f5f8;
-      height: 40vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .warning-strip {
-      background-color: #c99104;
-      padding: 2px 4px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .warning-strip .left-text {
-      margin-right: 0px; /* Increase or decrease this value to control the distance */
-    }
-
-    .warning-strip .right-text {
-      margin-left: 90px; /* Increase or decrease this value to control the distance */
-    }
-
     /* Hero text */
     .hero h1 {
-      font-family: 'Scheherazade New', serif;
       text-align: center;
     }
 
@@ -115,65 +216,12 @@ body {
       background-color: #f0f4f8;
     }
 
-    .language-button.active {
-      background-color: #fff;
-      color: #212121;
+                           /* Hero text */
+    .hero h1 {
+      font-family: 'Scheherazade New', serif;
+      text-align: center;
     }
 
-    #language-selector.open {
-      animation: open-selector 0.2s ease-in-out forwards;
-    }
-
-    @keyframes open-selector {
-      0% {
-        transform: scaleY(0);
-      }
-      100% {
-        transform: scaleY(1);
-      }
-    }
-
-    /* Styles for desktop */
-    @media (min-width: 768px) {
-      .content-boxes {
-        display: flex; /* Arrange boxes side-by-side */
-        justify-content: space-between; /* Add spacing between boxes */
-      }
-
-      .content-box {
-        display: flex;
-      }
-
-      .thank-you-box, .donor-list-box {
-        background-color: #f5f5f5;
-        width: 100%; /* adjust this value as needed */
-      }
-      .thank-you-box {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        }
-
-      .description {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-      }
-
-      .additional-text {
-        width: 100%;
-        padding: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-      }
       .footer {
         background-color: #f1f5f8; /* Desired background color */
         padding: 2rem 0; /* Adjust spacing as needed */
@@ -206,6 +254,71 @@ body {
         font-size: 0.8rem; /* Adjust font size as needed */
       }
 
+    .parent-box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .language-button.active {
+      background-color: #fff;
+      color: #212121;
+    }
+
+    #language-selector.open {
+      animation: open-selector 0.2s ease-in-out forwards;
+    }
+
+    @keyframes open-selector {
+      0% {
+        transform: scaleY(0);
+      }
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    .hero {
+      background-color: #f1f5f8;
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styles for desktop */
+    @media (min-width: 768px) {
+      .content-boxes {
+        display: flex; /* Arrange boxes side-by-side */
+        justify-content: space-between; /* Add spacing between boxes */
+      }
+
+      .content-box {
+        display: flex;
+      }
+
+      .description {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+      }
+
+      .additional-text {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+      }
       .ty {
         width: 100%;
         display: flex;
@@ -215,9 +328,10 @@ body {
 
       }
 
+
       .dl {
         width: 100%;
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -233,7 +347,7 @@ body {
       }
       .hero {
         height: 50vh; /* Increase height for better text wrapping */
-        font-size: 1.1rem; /* Reduce font size */
+        font-size: 1rem; /* Reduce font size */
       }
     }
 
@@ -246,26 +360,6 @@ body {
         height: 60vh; /* Increase height for better text wrapping */
         font-size: 0.7rem; /* Reduce font size */
       }
-      .creditbox {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        /* I have no idea how this works but please don't change anything here future me*/
-    }
-    }
-
-    @media (min-width: 768px) {
-        .parent-box {
-            display: flex;
-            justify-content: space-between;
-    }
-
-    .creditbox {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            /* I have no idea how this works but please don't change anything here future me*/
-    }
 
   .description-box, .additional-text-box {
     width: 45%; /* adjust this value as needed */
@@ -281,7 +375,6 @@ body {
     .header-fixed {
       background-color: #f1f5f8;
     }
-
     .main-content {
       padding: 2rem;
     }
@@ -315,113 +408,24 @@ body {
       border-radius: 5px;
     }
 
-    .iban {
-      font-size: 1.25rem;
-      font-weight: bold;
-      padding: 5px 10px;
-      background-color: #eee;
-      border-radius: 5px;
-    }
-
     .text-container {
       flex: 1; /* Expand to fill available space */
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Additional styles for spacing and clarity */
-    .copy-button-container {
-      display: flex;
-      align-items: center;
-      margin-right: 1rem; /* Adjust spacing as needed */
-    }
-
-    .copy-button {
-      height: 40px; /* Adjust as needed */
-      margin-left: 1rem; /* Adjust as needed */
-      padding: 5px 12px; /* Adjust as needed */
-      border: 6px solid #c2e7ff; /* Border color matching button background */
-      border-radius: 50px; /* Maintain pill shape */
-      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
-      background-color: #c2e7ff; /* Desired color */
-      color: #212121; /* Match language button text color */
-      cursor: pointer;
-    }
-
-    .copy-button:hover {
-      background-color: #f0f4f8; /* Hover color */
-    }
-
-    /* Additional styles for spacing and clarity */
-   .copy-name-container {
-      display: flex;
-      align-items: center;
-      margin-right: 1rem; /* Adjust spacing as needed */
-    }
-
-    .copy-name {
-      height: 40px; /* Adjust as needed */
-      margin-left: 1rem; /* Adjust as needed */
-      padding: 5px 12px; /* Adjust as needed */
-      border: 6px solid #c2e7ff; /* Border color matching button background */
-      border-radius: 50px; /* Maintain pill shape */
-      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
-      background-color: #c2e7ff; /* Desired color */
-      color: #212121; /* Match language button text color */
-      cursor: pointer;
-    }
-
-    .copy-name:hover {
-      background-color: #f0f4f8; /* Hover color */
-    }
-
-    .open-form {
-      height: 40px; /* Adjust as needed */
-      margin-left: 1rem; /* Adjust as needed */
-      padding: 5px 12px; /* Adjust as needed */
-      border: 6px solid #c2e7ff; /* Border color matching button background */
-      border-radius: 50px; /* Maintain pill shape */
-      transition: background-color 0.2s ease-in-out; /* Hover effect only for background */
-      background-color: #c2e7ff; /* Desired color */
-      color: #212121; /* Match language button text color */
-      cursor: pointer;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .open-form:hover {
-      background-color: #f0f4f8; /* Hover color */
+      text-align: center;
     }
 
     .verse-reference {
-      font-family: 'Scheherazade New', serif;
       font-size: 0.9em; /* Adjust font size as needed */
       text-align: center;
       padding-top: 10px; /* Adjust padding as needed */
       color: #888; /* Adjust color as needed */
     }
-
-    .feyyazm {
-      font-size: 1.25rem;
-      font-weight: bold;
-      padding: 5px 10px;
-      background-color: #eee;
-      border-radius: 5px;
-    }
   </style>
 
 </head>
 <body>
-  <div class="warning-strip" id="warning-strip">
-          <p class="left-text"><strong>بإمكانك الأن إرسال أكثر من الإستمارة واحدة، أشتري سهما قبل فوات الأوان!</strong></p>
-          <i class="material-symbols-outlined close-button right-text" id="close-button">close</i>
-      </div>
-      <script>
-          document.getElementById('close-button').addEventListener('click', function() {
-              document.getElementById('warning-strip').style.display = 'none';
-          });
-      </script>
   <header class="mdc-top-app-bar header-fixed">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
@@ -434,77 +438,6 @@ body {
   </header>
 
 <script>
-  // Ensure code runs after elements are loaded
-  window.addEventListener('DOMContentLoaded', () => {
-    // Select the copy button
-    const copyButton = document.querySelector(".copy-button");
-
-    // Add click event listener to the button
-    copyButton.addEventListener("click", function() {
-      // Get the IBAN text
-      const ibanText = document.querySelector(".iban").textContent;
-
-      // Copy the IBAN to the clipboard with fallback for older browsers
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(ibanText)
-          .then(() => {
-            alert("تم نسخ الIBAN إلى الحافظة.");
-          }, () => {
-            alert("حدث خطأ أثناء نسخ الIBAN.");
-          });
-      } else {
-        // Fallback for older browsers using document.execCommand
-        const textArea = document.createElement("textarea");
-        textArea.value = ibanText;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          const successful = document.execCommand('copy');
-          const msg = successful ? 'successful' : 'unsuccessful';
-          console.log('Copying text command was ' + msg);
-        } catch (err) {
-          console.error('Failed to copy text: ', err);
-        }
-        document.body.removeChild(textArea);
-      }
-    });
-  });
-
-
-    window.addEventListener('DOMContentLoaded', () => {
-    // Select the copy button
-    const copyName = document.querySelector(".copy-name");
-      // Add click event listener to the button
-    copyName.addEventListener("click", function() {
-      // Get the name text
-      const feyyazmText = document.querySelector(".feyyazm").textContent;
-
-      // Copy the name to the clipboard with fallback for older browsers
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(feyyazmText)
-          .then(() => {
-            alert("تم نسخ الإسم إلى الحافظة.");
-          }, () => {
-            alert("حدث خطأ أثناء نسخ الإسم.");
-          });
-      } else {
-        // Fallback for older browsers using document.execCommand
-        const textArea = document.createElement("textarea");
-        textArea.value = feyyazmText;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          const successful = document.execCommand('copy');
-          const msg = successful ? 'successful' : 'unsuccessful';
-          console.log('Copying text command was ' + msg);
-        } catch (err) {
-          console.error('Failed to copy text: ', err);
-        }
-        document.body.removeChild(textArea);
-      }
-    });
-  });
-
 const languageSelector = document.getElementById('language-selector');
 const languageButtons = document.querySelectorAll('.language-button');
 
@@ -548,7 +481,7 @@ languageButtons.forEach(button => {
     });
   </script>
 </body>
-
+</body>
 
   <div class="hero">
     <h1>مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُمۡ فِي سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتۡ سَبۡعَ سَنَابِلَ فِي كُلِّ سُنۢبُلَةٖ مِّاْئَةُ حَبَّةٖۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ</h1>
@@ -566,107 +499,563 @@ languageButtons.forEach(button => {
                     يعاني ملايين الأشخاص في نيجيريا من صعوبة الحصول على المياه النظيفة. تخيل العيش مع الخوف المستمر من الأمراض وعبء الرحلات اليومية الطويلة فقط للوصول إلى مصدر مياه. هذا هو الواقع لعدد لا يحصى من العائلات، ولكن يمكنك المساعدة.
                 </div>
             </div>
-        </div>
-   <div class="content-box">
-    <div class="donation-details">
-      <div class="detail-set">
-        <span class="iban">TR48 0020 3000 0378 8052 0000 06</span>
-        <div class="copy-button-container">
-          <button class="copy-button">انسخ IBAN</button>
-        </div>
-      </div>
-      <div class="detail-set">
-        <span class="okk">AlBaraka</span>
-        <span class="feyyazm">Feyyaz Mehmetoğlu</span>
-        <div class="copy-name-container">
-          <button class="copy-name">انسخ الإسم</button>
-          </div>
-      </div>
-    </div>
-    <div class="detail-set">
-    <div class="text-container">
-      <p>يكلف سهم واحد 350 ليرة ، يمكن لأكثر من طالب ان يشاركوا بشراء سهم واحد ويمكن لطالب شراء اكثر من سهم واحد.</p>
-      <button class="open-form" onclick="window.open('https://forms.gle/RCU7RnDRkgStqCL89', '_blank')">أفتح الإستمارة</button>
-      </div>
-      </div>
-    <div class="text-container">
-      <p> روى الإمام أحمد وغيره عن سعد بن عبادة- رضي الله عنه- قال: قلت: (يا رسول الله إن أمي ماتت، أفأتصدق عنها؟ قال: نعم، قلت: فأي الصدقة أفضل؟ قال: سقي الماء)</p>
-    </div>
-  </div>
-
- <div class="main-content">
-  <div class="creditbox">
+        </div>                            <div class="main-content">
     <div class="content-box thank-you-box">
-      <div class="ty">
-      <h3>شكرا جزيلا لكل من ساعد في هذه الحملة!</h3>
-      <ul>
-        <li>أستاذة منار محمود (رئيسة الحملة)</li>
-        <li>عبدالرحمان علمي (صاحب المجموعة ومشرف الإستمارة)</li>
-        <li>مريم علمي (مديرة دعوات للمجموعة)</li>
-        <li>عدنان النبرس (مدير دعوات للمجموعة)</li>
-        <li>جهاد المبارك (دعم تقني وصاحب الموقع)</li>
-      </ul>
-      </div>
+                           <div class="container d-flex justify-content-center mt-5">
+                                                        <h3>شكرا جزيلا لكل من ساعد في هذه الحملة!</h3>
+      <div class="card-container"> <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
     </div>
-    </div>
-    <div class="creditbox">
-    <div class="content-box donor-list-box">
-    <div class="dl">
-      <ul>
-        <li>عمر الأوبري</li>
-        <li>مريم سعدى</li>
-        <li>نور جمال</li>
-        <li>أديب الراس</li>
-        <li>دانة العمودي</li>
-        <li>سعيد أحمد نور</li>
-        <li>عبدالكريم كراوي</li>
-        <li>علي المبارك</li>
-        <li>أستاذ علاء حواس</li>
-        <li>إيمان شهان</li>
-        <li>صادق</li>
-        <li>بينار المصتطفى</li>
-        <li>ريم أتيغا</li>
-        <li>عبدالرحمان الأصباحي</li>
-        <li>باسل الشريف</li>
-        <li>شهد الرومي</li>
-        <li>علي خان</li>
-        <li>أحمد عبدالله</li>
-        <li>جنى القهوجي</li>
-        <li>أحمد بشير</li>
-        <li>أسامة حمزة</li>
-        <li>سارة طارق</li>
-      </ul>
-      </div>
-      </div>
-      <div class="content-box donor-list-box">
-      <div class="dl">
-      <h3>قائمة المتصدقين (في التسلسل الزمني)</h3>
-      <ul>
-        <li>ليث كتانا</li>
-        <li>أستاذة منار محمود</li>
-        <li>سلمى حاتم</li>
-        <li>إيشل فاطمة</li>
-        <li>زيد أبو مري</li>
-        <li>مريم علمي</li>
-        <li>عبدالرحمان علمي</li>
-        <li>عمر طاهر</li>
-        <li>هبة السومي</li>
-        <li>خالد زاهرالدين</li>
-        <li>دنيز داماني</li>
-        <li>نور محيش</li>
-        <li>يوسف الشيخ</li>
-        <li>جهاد المبارك</li>
-        <li>هدى علي</li>
-        <li>محمد الحمادي</li>
-        <li>أستاذة لينا محفوظ</li>
-        <li>معتصم الخضير</li>
-        <li>عدنان النبرس</li>
-        <li>يوسف عبدالواحد</li>
-        <li>آسيا أحمد</li>
-      </ul>
+    <div class="ml-3">
+      <h5 class="name">أستاذة منار محمود</h5>
+      <p class="mail">رئيسة الحملة</p>
     </div>
   </div>
 </div>
+                                                  <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عبدالرحمن علمي</h5>
+      <p class="mail">صاحب المجموعة ومشرف الإستمارة</p>
+    </div>
+  </div>
+</div>
+                                                  <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">مريم علمي</h5>
+      <p class="mail">مديرة دعوات للمجموعة</p>
+    </div>
+  </div>
+</div>
+                                                  <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عدنان النبرس</h5>
+      <p class="mail">مدير دعوات للمجموعة</p>
+    </div>
+  </div>
+</div>
+                                                  <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">جهاد المبارك</h5>
+      <p class="mail">دعم تقني وصاحب الموقع</p>
+    </div>
+</div>
+</div>
+
+                                                                                                                       </div>
+                                                                                                </div>
+                                                                         </div>
+    <div class="creditbox">
+    <div class="content-box donor-list-box">
+                           <div class="dl">
+                           <div class="container d-flex justify-content-center mt-5">
+                                                  <h3>قائمة المتصدقين (في التسلسل الزمني)   </h3>
+                                                      <div class="card-container"> <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">ليث كتانا</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أستاذة منار محمود</h5>
+      <p class="mail">أستاذة التربية الإسلامية</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">سلمى حاتم</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">إيشل فاطمة</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">زيد أبو مري</h5>
+      <p class="mail">12B3</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">مريم علمي</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عبدالرحمن علمي</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عمر طاهر</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">هبة السرمي</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">خالد زاهرالدين</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">دنيز داماني</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">نور محيش</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">يوسف الشيخ</h5>
+      <p class="mail">12B3</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">جهاد المبارك</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">هدى علي</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">محمد الحمادي</h5>
+      <p class="mail">12B3</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أستاذة لينا محفوظ</h5>
+      <p class="mail">أستاذة اللغة العربية</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">معتصم الخضير</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عدنان النبرس</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">يوسف عبدالواحد</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">آسيا أحمد</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عمر الأوبري</h5>
+      <p class="mail">12B3</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">مريم سعدى</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">نور جمال</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أديب الراس</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">دانة العمودي</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">سعيد أحمد نور</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عبدالكريم كراوي</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">علي المبارك</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                          <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أستاذ علاء حواس</h5>
+      <p class="mail">أستاذ الرياضيات</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">إيمان شهان</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">صادق الأوادي</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">بينار المصتطفى</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">ريم أتيغا</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">عبدالرحمان الأصباحي</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                                                                             <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">باسل الشريف</h5>
+      <p class="mail">12B3</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">شهد الرومي</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">علي خان</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أحمد عبدالله</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">جنى القهوجي</h5>
+      <p class="mail">12G2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أحمد بشير</h5>
+      <p class="mail">12B2</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">أسامة حمزة</h5>
+      <p class="mail">12B1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">سارة طارق</h5>
+      <p class="mail">12G1</p>
+    </div>
+</div>
+</div>
+                           <div class="card">
+  <div class="top-container">
+    <div class="profile-image-container" style="padding-right: 10px;">
+      <img src="http://isamb.medicina.ulisboa.pt/wp-content/uploads/bb-plugin/cache/Unknown_person-circle.jpg" class="img-fluid profile-image" width="70">
+    </div>
+    <div class="ml-3">
+      <h5 class="name">سندس فضيلة</h5>
+      <p class="mail">10G1</p>
+    </div>
+</div>
+</div>
+                                                                             </div>
+                           
+      </div>
+      </div>
+                           </div>
 
 <footer class="footer">
   <div class="container">
@@ -685,6 +1074,3 @@ languageButtons.forEach(button => {
     </div>
   </div>
 </footer>
-
-
-   <!-->
